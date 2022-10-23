@@ -14,7 +14,7 @@ class FirstController extends AbstractController
     #[Route('/first/name')]
     public function list(MessageBusInterface $bus): Response
     {
-        $bus->dispatch(new SendMessage('Look! I have a message!'));
+        $bus->dispatch(new SendMessage('I have second match!'));
 
         return new Response('test');
     }
