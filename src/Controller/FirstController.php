@@ -14,7 +14,7 @@ class FirstController extends AbstractController
     #[Route('/first/name')]
     public function list(MessageBusInterface $bus): Response
     {
-        $bus->dispatch(new SendMessage('Look! I dqwwqdqdq a message!'));
+        $bus->dispatch(new SendMessage('Look! I have a message!'));
 
         return new Response('test');
     }
@@ -23,13 +23,11 @@ class FirstController extends AbstractController
     public function test(): Response
     {
         $service = new ImmutableService(
-            123,
-            'mystring',
+            1337,
+            'NewStringExample',
             [1, 2, 3, 4]
         );
 
-        dd($service->getSimple(123));
-
-        return new Response('test');
+        return new Response('MyResponse');
     }
 }

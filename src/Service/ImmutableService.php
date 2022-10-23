@@ -26,25 +26,8 @@ final class ImmutableService
         return $this->array;
     }
 
-    public function setNewValues(int $immutableInteger, string $immutableString): self
+    public function setSelf(int $int, string $sting): self
     {
-        return new self($immutableInteger, $immutableString, []);
-    }
-
-    public function getFrom(): \Iterator
-    {
-        yield from $this->getAnotherGen();
-    }
-
-    public function getAnotherGen(): \Iterator
-    {
-        yield 111;
-        yield 222;
-        yield 333;
-    }
-
-    public function getSimple(string $var): string
-    {
-        return $var;
+        return new self($int, $sting, []);
     }
 }
