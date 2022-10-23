@@ -19,10 +19,10 @@ class FirstController extends AbstractController
         return new Response('test');
     }
 
-    #[Route('/first/test')]
-    public function test(): Response
+    #[Route('/service/immutable')]
+    public function immutable(): Response
     {
-        $service = new ImmutableService(
+        $serv = new ImmutableService(
             1337,
             'NewStringExample',
             [1, 2, 3, 4]
