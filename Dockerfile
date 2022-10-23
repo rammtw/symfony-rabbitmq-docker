@@ -33,6 +33,9 @@ RUN apk add --no-cache \
 		file \
 		gettext \
 		git \
+    	autoconf \
+    	build-base \
+    	rabbitmq-c-dev \
 	;
 
 RUN set -eux; \
@@ -44,6 +47,15 @@ RUN set -eux; \
     ;
 
 ###> recipes ###
+###> doctrine/doctrine-bundle ###
+RUN apk add --no-cache --virtual .pgsql-deps postgresql-dev; \
+	docker-php-ext-install -j$(nproc) pdo_pgsql; \
+	apk add --no-cache --virtual .pgsql-rundeps so:libpq.so.5; \
+	apk del .pgsql-deps
+
+RUN pecl install -f amqp
+RUN docker-php-ext-enable amqp
+###< doctrine/doctrine-bundle ###
 ###< recipes ###
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
