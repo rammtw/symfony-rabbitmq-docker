@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Message\SendMessage;
 use App\Service\ImmutableService;
+use mPDF;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -29,5 +30,15 @@ class FirstController extends AbstractController
         );
 
         return new Response('MyResponse');
+    }
+
+    #[Route('service/image', schemes: ['https'])]
+    public function image(): Response
+    {
+        $mpdf = new \Mpdf\Mpdf(['tempDir' => '/var/tmp']);
+        $mpdf->WriteHTML('<b>I am bold</b>');
+        $mpdf->Output();
+
+        return new Response('ImgResponse');
     }
 }

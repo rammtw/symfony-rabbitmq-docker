@@ -12,6 +12,7 @@
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13",
+        "mpdf/mpdf": "^8.1",
         "sensio/framework-extra-bundle": "^6.2",
         "symfony/amqp-messenger": "6.1.*",
         "symfony/console": "6.1.*",
